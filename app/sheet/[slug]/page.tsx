@@ -80,7 +80,7 @@ export default async function SheetPage({ params }: PageProps) {
         <div className="mt-8 p-6 bg-muted/50 rounded-lg">
           <h3 className="text-sm font-semibold mb-3">Topics covered:</h3>
           <div className="flex flex-wrap gap-2">
-            {sheet.tags.map((tag) => (
+            {sheet.tags.map((tag: string) => (
               <Badge key={tag} variant="secondary">
                 {tag}
               </Badge>
