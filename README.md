@@ -1,36 +1,154 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Daily Practice Hub 📚
 
-## Getting Started
+A modern web platform for parents to download daily practice sheets (PDFs) for their children in Years 3-6. Built with Next.js, TypeScript, Tailwind CSS, and Sanity CMS.
 
-First, run the development server:
+## ✨ Features
+
+- 🎯 **Year-specific content** for Years 3-6
+- 📅 **Daily practice sheets** with automatic "Today's Sheet" highlighting
+- 📖 **Multiple subjects**: Maths, English, Grammar, Reading, Thinking, Mixed
+- 🔍 **Subject filtering** for easy navigation
+- 📧 **Newsletter subscription** for daily updates
+- 📱 **Fully responsive** design
+- 🎨 **Modern UI** with shadcn/ui components
+- 🚀 **Fast performance** with Next.js App Router
+
+## 🛠 Tech Stack
+
+- **Framework**: Next.js 15 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS + shadcn/ui
+- **CMS**: Sanity.io
+- **Icons**: Lucide React
+- **Date Handling**: date-fns
+
+## 🚀 Quick Start
+
+### 1. Setup Sanity CMS
+
+**Follow the detailed guide in [SANITY_SETUP.md](./SANITY_SETUP.md)**
+
+Quick summary:
+1. Go to [sanity.io](https://www.sanity.io/) and create a free account
+2. Create a new project called "Daily Practice Hub"
+3. Get your Project ID and create an API token
+
+### 2. Configure Environment Variables
+
+Open [.env.local](./.env.local) and add your Sanity credentials:
+
+```env
+NEXT_PUBLIC_SANITY_PROJECT_ID="your-project-id-here"
+NEXT_PUBLIC_SANITY_DATASET="production"
+SANITY_API_TOKEN="your-api-token-here"
+NEXT_PUBLIC_SITE_URL="http://localhost:3000"
+```
+
+### 3. Run the Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to see your app!
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 4. Access Sanity Studio
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Go to [http://localhost:3000/studio](http://localhost:3000/studio) to manage content and upload practice sheets.
 
-## Learn More
+## 📁 Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+daily-practice-hub/
+├── app/                     # Next.js App Router pages
+│   ├── page.tsx            # Home page
+│   ├── year-3/             # Year 3 sheets
+│   ├── year-4/             # Year 4 sheets
+│   ├── year-5/             # Year 5 sheets
+│   ├── year-6/             # Year 6 sheets
+│   ├── sheet/[slug]/       # Sheet detail pages
+│   ├── studio/             # Embedded Sanity Studio
+│   └── api/newsletter/     # Newsletter API
+├── components/             # React components
+│   ├── home/              # Home page components
+│   ├── layout/            # Header, Footer
+│   ├── sheet/             # Sheet components
+│   ├── shared/            # Reusable components
+│   └── ui/                # shadcn/ui components
+├── lib/sanity/            # Sanity config & queries
+├── sanity/schemas/        # Content schemas
+└── public/                # Static assets
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📝 Content Management
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Uploading Practice Sheets
 
-## Deploy on Vercel
+1. Navigate to [localhost:3000/studio](http://localhost:3000/studio)
+2. Click "Practice Sheet" → "Create new"
+3. Fill in the form:
+   - **Title**: "Fractions Practice: Adding Like Denominators"
+   - **Year Level**: 3, 4, 5, or 6
+   - **Subject**: Maths, English, etc.
+   - **Publish Date**: Today's date for "Today's Sheet"
+   - **PDF File**: Upload your PDF
+   - **Slug**: Auto-generate from title
+   - **Tags**, **Duration**, **Difficulty** (optional)
+4. Click "Publish"
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🎨 Pages Overview
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Home** (`/`) - Hero, year level cards, newsletter
+- **Year Pages** (`/year-3` to `/year-6`) - Today's sheet + archive
+- **Sheet Detail** (`/sheet/[slug]`) - Full sheet info + download
+- **Studio** (`/studio`) - Content management
+
+## 🚢 Deployment
+
+### Deploy to Vercel
+
+1. Push code to GitHub
+2. Import in Vercel
+3. Add environment variables
+4. Deploy!
+
+### Required Environment Variables
+
+- `NEXT_PUBLIC_SANITY_PROJECT_ID`
+- `NEXT_PUBLIC_SANITY_DATASET`
+- `SANITY_API_TOKEN`
+- `NEXT_PUBLIC_SITE_URL`
+
+## 🗺️ Roadmap
+
+### Phase 2
+- Search functionality
+- PDF preview images
+- Email automation
+- Advanced filtering
+
+### Phase 3
+- Premium content with Stripe
+- User accounts
+- Download history
+- Weekly/monthly packs
+
+### Phase 4
+- Cloudflare R2 for PDFs
+- Analytics dashboard
+- Performance optimizations
+
+## 📚 Documentation
+
+- [SANITY_SETUP.md](./SANITY_SETUP.md) - Detailed Sanity setup guide
+- [Next.js Docs](https://nextjs.org/docs)
+- [Sanity Docs](https://www.sanity.io/docs)
+- [shadcn/ui Docs](https://ui.shadcn.com)
+
+## 🤝 Support
+
+For questions or issues with setup, refer to the documentation links above.
+
+---
+
+Built with ❤️ using Next.js, TypeScript, Tailwind CSS, and Sanity CMS
